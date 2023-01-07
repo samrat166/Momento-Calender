@@ -1,0 +1,12 @@
+.calender {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(52, auto);
+}
+
+.week-cell {
+  border: 1px solid #333;
+  height: 15px;
+  width: 15px;
+  border-radius: 20%;
+}

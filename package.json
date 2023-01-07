@@ -1,0 +1,30 @@
+{
+  "name": "momento-mori-calender",
+  "version": "1.1.4",
+  "description": "Momento mori calender",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samrat166/Momento-Calender.git"
+  },
+  "keywords": [
+    "Momento",
+    "mori",
+    "calender"
+  ],
+  "author": "Samrat Ojha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samrat166/Momento-Calender/issues"
+  },
+  "homepage": "https://github.com/samrat166/Momento-Calender#readme",
+  "dependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6"
+  }
+}
