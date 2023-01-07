@@ -1,6 +1,6 @@
 {
   "name": "momento-mori-calender",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "description": "Momento mori calender",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
   "keywords": [
     "Momento",
     "mori",
-    "calender"
+    "calender",
+    "Samrat"
   ],
   "author": "Samrat Ojha",
   "license": "MIT",
