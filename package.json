@@ -1,6 +1,6 @@
 {
   "name": "momento-mori-calender",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Momento mori calender",
   "main": "index.js",
   "scripts": {
