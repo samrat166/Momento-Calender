@@ -13,3 +13,7 @@
   width: 1vw;
   border-radius: 20%;
 }
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}

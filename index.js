@@ -55,57 +55,40 @@ const styles = {
   cursor: "pointer",
   backgroundColor: "red",
 };
-const yearLabel = [
-  {
-    index: 259,
-    label: 5,
-  },
-  {
-    index: 519,
-    label: 10,
-  },
-  {
-    index: 779,
-    label: 15,
-  },
-  {
-    index: 1039,
-    label: 20,
-  },
-  {
-    index: 1299,
-    label: 25,
-  },
-  {
-    index: 1819,
-    label: 35,
-  },
-  {
-    index: 2599,
-    label: 50,
-  },
-  {
-    index: 3379,
-    label: 65,
-  },
-  {
-    index: 4159,
-    label: 80,
-  },
-];
+function yearLabelCalculator(array) {
+  let result = [];
+  array.forEach((i) => {
+    result.push({
+      index: i * 52 - 1,
+      label: i,
+    });
+  });
+  return result;
+}
 function MomentoMoriCalender({
+  yearLabel = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80],
   boxColorOption = ["#4ea69d", "#b350aa", "#a5c45a", "#a1405d"],
+  defaultBoxColor = "#4ea69d",
+  dateOfBirth = "1999-10-16",
+  showDateInput = true,
+  title = "Momento Mori Life Calender",
 }) {
-  const [dateOfBirth, setDateOfBirth] = (0, _react.useState)();
+  var _boxColorOption$;
+  const [dob, setDob] = (0, _react.useState)(dateOfBirth);
   const [boxColor, setBoxColor] = (0, _react.useState)(
-    boxColorOption === null || boxColorOption === void 0
-      ? void 0
-      : boxColorOption[0]
+    (_boxColorOption$ =
+      boxColorOption === null || boxColorOption === void 0
+        ? void 0
+        : boxColorOption[0]) !== null && _boxColorOption$ !== void 0
+      ? _boxColorOption$
+      : defaultBoxColor
   );
   const [week, setWeek] = (0, _react.useState)([]);
-  function weeksInLife(dateOfBirth, boxColor) {
+  // 2023-01-12
+  const yearsToShowOnRightSide = yearLabelCalculator(yearLabel);
+  function weeksInLife(dob, boxColor) {
     const today = new Date();
-    const start = new Date(dateOfBirth);
+    const start = new Date(dob);
     const end = new Date(
       today.getFullYear(),
       today.getMonth(),
@@ -129,8 +112,8 @@ function MomentoMoriCalender({
     return weeks;
   }
   (0, _react.useEffect)(() => {
-    setWeek(weeksInLife(dateOfBirth, boxColor));
-  }, [dateOfBirth, boxColor]);
+    setWeek(weeksInLife(dob, boxColor));
+  }, [dob, boxColor]);
   return /*#__PURE__*/ _react.default.createElement(
     _react.default.Fragment,
     null,
@@ -159,57 +142,71 @@ function MomentoMoriCalender({
           },
           /*#__PURE__*/ _react.default.createElement(
             "div",
-            null,
-            /*#__PURE__*/ _react.default.createElement(
-              "span",
-              null,
-              "Date of Birth:"
-            ),
-            " ",
-            /*#__PURE__*/ _react.default.createElement("input", {
-              type: "date",
-              onChange: (e) => setDateOfBirth(e.target.value),
-              style: {
-                borderRadius: "10px",
-              },
-            })
-          ),
-          /*#__PURE__*/ _react.default.createElement(
-            "h3",
             {
               style: {
-                textAlign: "left",
+                width: "25%",
               },
             },
-            /*#__PURE__*/ _react.default.createElement(
-              "i",
-              null,
-              " Momento Mori Life Calender"
-            )
+            showDateInput &&
+              /*#__PURE__*/ _react.default.createElement(
+                _react.default.Fragment,
+                null,
+                /*#__PURE__*/ _react.default.createElement(
+                  "span",
+                  null,
+                  "Date of Birth:"
+                ),
+                " ",
+                /*#__PURE__*/ _react.default.createElement("input", {
+                  type: "date",
+                  value: dob,
+                  onChange: (e) => setDob(e.target.value),
+                  style: {
+                    borderRadius: "10px",
+                  },
+                })
+              )
           ),
           /*#__PURE__*/ _react.default.createElement(
             "div",
             {
               style: {
-                display: "flex",
+                width: "60%",
+                textAlign: "center",
+                fontSize: "24px",
               },
             },
-            /*#__PURE__*/ _react.default.createElement(
-              "span",
-              null,
-              "Box Color:"
-            ),
-            " ",
-            boxColorOption.map((color) => {
-              return /*#__PURE__*/ _react.default.createElement("div", {
-                style: {
-                  ...styles,
-                  backgroundColor: color,
-                  border: boxColor !== color && "3px solid white",
+            title &&
+              /*#__PURE__*/ _react.default.createElement("i", null, " ", title)
+          ),
+          /*#__PURE__*/ _react.default.createElement(
+            "div",
+            {
+              style: {
+                width: "20%",
+              },
+            },
+            boxColorOption.length !== 0 &&
+              /*#__PURE__*/ _react.default.createElement(
+                "div",
+                {
+                  style: {
+                    display: "flex",
+                    justifyContent: "end",
+                  },
                 },
-                onClick: () => setBoxColor(color),
-              });
-            })
+                boxColorOption.map((color) => {
+                  return /*#__PURE__*/ _react.default.createElement("div", {
+                    key: color,
+                    style: {
+                      ...styles,
+                      backgroundColor: color,
+                      border: boxColor !== color && "3px solid white",
+                    },
+                    onClick: () => setBoxColor(color),
+                  });
+                })
+              )
           )
         )
       ),
@@ -221,13 +218,13 @@ function MomentoMoriCalender({
         week.map((item, index) => {
           let sixMonth = index % 26 === 0;
           let rowSpace = (index + 1) % 520 === 0;
-          console.log(item.date);
           return /*#__PURE__*/ _react.default.createElement(
             _react.default.Fragment,
             null,
             /*#__PURE__*/ _react.default.createElement(
               "div",
               {
+                key: item.date,
                 title: item.date !== "Invalid Date" && item.date.slice(4, 15),
                 className: "week-cell",
                 style: {
@@ -248,15 +245,16 @@ function MomentoMoriCalender({
                   item.date !== "Invalid Date" && item.date.slice(4, 15)
                 ),
               " ",
-              yearLabel.map((year) => {
+              yearsToShowOnRightSide.map((year) => {
                 if (year.index === index)
                   return /*#__PURE__*/ _react.default.createElement(
                     "h6",
                     {
+                      key: year.label,
                       style: {
-                        fontSize: "14px",
+                        fontSize: "12px",
                         marginLeft: "15px",
-                        fontWeight: "bold",
+                        fontWeight: "600",
                         marginTop: "-3px",
                       },
                     },
