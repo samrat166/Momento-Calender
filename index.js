@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
+require("./app.css");
 function _getRequireWildcardCache(nodeInterop) {
   if (typeof WeakMap !== "function") return null;
   var cacheBabelInterop = new WeakMap();
