@@ -4,7 +4,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true,
 });
 exports.default = void 0;
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function (nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || (typeof obj !== "object" && typeof obj !== "function")) {
+    return { default: obj };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor =
+    Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor
+        ? Object.getOwnPropertyDescriptor(obj, key)
+        : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
 const styles = {
   marginLeft: "5px",
   marginTop: "3px",
@@ -52,7 +92,7 @@ const yearLabel = [
     label: 80,
   },
 ];
-function MomentoMori({
+function MomentoMoriCalender({
   boxColorOption = ["#4ea69d", "#b350aa", "#a5c45a", "#a1405d"],
 }) {
   const [dateOfBirth, setDateOfBirth] = (0, _react.useState)();
@@ -90,15 +130,15 @@ function MomentoMori({
   (0, _react.useEffect)(() => {
     setWeek(weeksInLife(dateOfBirth, boxColor));
   }, [dateOfBirth, boxColor]);
-  return /*#__PURE__*/ React.createElement(
-    React.Fragment,
+  return /*#__PURE__*/ _react.default.createElement(
+    _react.default.Fragment,
     null,
-    /*#__PURE__*/ React.createElement(
+    /*#__PURE__*/ _react.default.createElement(
       "div",
       {
         className: "container",
       },
-      /*#__PURE__*/ React.createElement(
+      /*#__PURE__*/ _react.default.createElement(
         "div",
         {
           style: {
@@ -107,7 +147,7 @@ function MomentoMori({
             width: "80vw",
           },
         },
-        /*#__PURE__*/ React.createElement(
+        /*#__PURE__*/ _react.default.createElement(
           "div",
           {
             style: {
@@ -116,12 +156,16 @@ function MomentoMori({
               marginRight: "20px",
             },
           },
-          /*#__PURE__*/ React.createElement(
+          /*#__PURE__*/ _react.default.createElement(
             "div",
             null,
-            /*#__PURE__*/ React.createElement("span", null, "Date of Birth:"),
+            /*#__PURE__*/ _react.default.createElement(
+              "span",
+              null,
+              "Date of Birth:"
+            ),
             " ",
-            /*#__PURE__*/ React.createElement("input", {
+            /*#__PURE__*/ _react.default.createElement("input", {
               type: "date",
               onChange: (e) => setDateOfBirth(e.target.value),
               style: {
@@ -129,30 +173,34 @@ function MomentoMori({
               },
             })
           ),
-          /*#__PURE__*/ React.createElement(
+          /*#__PURE__*/ _react.default.createElement(
             "h3",
             {
               style: {
                 textAlign: "left",
               },
             },
-            /*#__PURE__*/ React.createElement(
+            /*#__PURE__*/ _react.default.createElement(
               "i",
               null,
               " Momento Mori Life Calender"
             )
           ),
-          /*#__PURE__*/ React.createElement(
+          /*#__PURE__*/ _react.default.createElement(
             "div",
             {
               style: {
                 display: "flex",
               },
             },
-            /*#__PURE__*/ React.createElement("span", null, "Box Color:"),
+            /*#__PURE__*/ _react.default.createElement(
+              "span",
+              null,
+              "Box Color:"
+            ),
             " ",
             boxColorOption.map((color) => {
-              return /*#__PURE__*/ React.createElement("div", {
+              return /*#__PURE__*/ _react.default.createElement("div", {
                 style: {
                   ...styles,
                   backgroundColor: color,
@@ -164,7 +212,7 @@ function MomentoMori({
           )
         )
       ),
-      /*#__PURE__*/ React.createElement(
+      /*#__PURE__*/ _react.default.createElement(
         "div",
         {
           className: "calender",
@@ -173,10 +221,10 @@ function MomentoMori({
           let sixMonth = index % 26 === 0;
           let rowSpace = (index + 1) % 520 === 0;
           console.log(item.date);
-          return /*#__PURE__*/ React.createElement(
-            React.Fragment,
+          return /*#__PURE__*/ _react.default.createElement(
+            _react.default.Fragment,
             null,
-            /*#__PURE__*/ React.createElement(
+            /*#__PURE__*/ _react.default.createElement(
               "div",
               {
                 title: item.date !== "Invalid Date" && item.date.slice(4, 15),
@@ -188,7 +236,7 @@ function MomentoMori({
                 },
               },
               index % 52 === 0 &&
-                /*#__PURE__*/ React.createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   "h6",
                   {
                     style: {
@@ -201,7 +249,7 @@ function MomentoMori({
               " ",
               yearLabel.map((year) => {
                 if (year.index === index)
-                  return /*#__PURE__*/ React.createElement(
+                  return /*#__PURE__*/ _react.default.createElement(
                     "h6",
                     {
                       style: {
@@ -221,5 +269,5 @@ function MomentoMori({
     )
   );
 }
-var _default = MomentoMori;
+var _default = MomentoMoriCalender;
 exports.default = _default;

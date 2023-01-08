@@ -6,7 +6,7 @@ Fill in a new square with each passing week, and you'll quickly experience impr
 
 # UI Design
 
-Momento Mori Calender Design Prototype and specification, click to [view][momento-mori-design].
+Momento Mori Life Calender Design Prototype and specification, click to [view][momento-mori-design].
 
 # Installation
 
