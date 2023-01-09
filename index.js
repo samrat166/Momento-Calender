@@ -69,7 +69,7 @@ function MomentoMoriCalender({
   yearLabel = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80],
   boxColorOption = ["#4ea69d", "#b350aa", "#a5c45a", "#a1405d"],
   defaultBoxColor = "#4ea69d",
-  dateOfBirth = "1999-10-16",
+  dateOfBirth = "",
   showDateInput = true,
   title = "Momento Mori Life Calender",
 }) {
@@ -112,8 +112,11 @@ function MomentoMoriCalender({
     return weeks;
   }
   (0, _react.useEffect)(() => {
+    setDob(dateOfBirth);
+  }, [dateOfBirth]);
+  (0, _react.useEffect)(() => {
     setWeek(weeksInLife(dob, boxColor));
-  }, [dob, boxColor]);
+  }, [dob, dateOfBirth, boxColor]);
   return /*#__PURE__*/ _react.default.createElement(
     _react.default.Fragment,
     null,
