@@ -33,11 +33,9 @@ export const Example = () => {
   return (
     <MomentoMoriCalender
       yearLabel={[5, 10, 15, 20, 30, 40, 50, 60, 70, 80]}
-      boxColorOption={["#4ea69d", "#b350aa", "#a5c45a", "#a1405d"]}
-      defaultBoxColor="#4ea69d"
       dateOfBirth="1999-10-16"
       showDateInput
-      title="Momento Mori Life Calender"
+      events={[]}
     />
   );
 };
@@ -53,23 +51,7 @@ yearLabel is an array of years
 
 yearLabel = {[10,20,30,40]}
 
-## 2. boxColorOption
-
-boxColorOption is an array of color
-
-### Example:
-
-boxColorOption = {['red','green','orange']}
-
-## 3. defaultBoxColor
-
-defaultBoxColor is a default color which is provided in case of no any boxColorOption
-
-### Example:
-
-defaultBoxColor = 'red'
-
-## 4. dateOfBirth
+## 2. dateOfBirth
 
 dateOfBirth (YYYY-MM-DD) is a value on which momento mori calender is ganerated.You can provide dateOfBirth or use date picker by passing showDateInput as props
 
@@ -77,13 +59,28 @@ dateOfBirth (YYYY-MM-DD) is a value on which momento mori calender is ganerated.
 
 dateOfBirth = '1999-10-16'
 
-## 5. title
+## 3. showDateInput
 
-title sets title of the calender
+showDateInput generates a date picker
+
+## 4. events
+
+showDateInput generates a date picker
 
 ### Example:
 
-title = 'Momento Mori Life Calender'
+events = {[{
+startingDate: "1999-10-26",
+endDate: "2002-02-01",
+color: "pink",
+description: "My school day",
+},
+{
+startingDate: "2002-02-01",
+endDate: "2008-01-11",
+color: "green",
+description: "My love day",
+},]}
 
 [npm-home]: https://www.npmjs.com/package/momento-mori-calender
 [momento-mori-design]: https://momento-mori-calender.netlify.app/
