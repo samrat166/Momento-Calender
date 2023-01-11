@@ -8,6 +8,8 @@ Fill in a new square with each passing week, and you'll quickly experience impr
 
 Momento Mori Calender Design Prototype and specification, click to [view][momento-mori-design].
 
+![Screenshot](screenshot.jpg)
+
 # Installation
 
 Momento Mori is available as an [npm package][npm-home].
@@ -65,22 +67,19 @@ showDateInput generates a date picker
 
 ## 4. events
 
-showDateInput generates a date picker
+Events is an array of object where each object is an event.Each event should have startingDate,endDate ,color and description.
+startingDate and endDate are of format 'YYY-MM-DD' , color and description are of string type.
 
 ### Example:
 
-events = {[{
+events = {[
+{
 startingDate: "1999-10-26",
 endDate: "2002-02-01",
 color: "pink",
 description: "My school day",
-},
-{
-startingDate: "2002-02-01",
-endDate: "2008-01-11",
-color: "green",
-description: "My love day",
-},]}
+}
+]}
 
 [npm-home]: https://www.npmjs.com/package/momento-mori-calender
 [momento-mori-design]: https://momento-mori-calender.netlify.app/
