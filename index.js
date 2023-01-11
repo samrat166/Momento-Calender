@@ -56,86 +56,83 @@ function yearLabelCalculator(array) {
   });
   return result;
 }
+function weeksInLife(param) {
+  const dateOfBirth = new Date(param.dateOfBirth);
+  const defaultColor = param.defaultColor;
+  const events = param.events.length === 0 ? [] : param.events;
+  const today = new Date();
+  const end = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const weeks = [];
+  let start = new Date(dateOfBirth);
+  for (let i = 0; i < 4160; i++) {
+    let date = start.toString();
+    let color = defaultColor;
+    let event;
+    let eventExist = false;
+    let eventDescription = "No event";
+    let weekEvent = events.find((e) => {
+      const eventStart = new Date(e.startingDate);
+      const eventEnd = new Date(e.endDate);
+      if (eventStart <= start && start <= eventEnd) {
+        eventExist = true;
+        color = e.color;
+        eventDescription = e.description;
+        return true;
+      }
+    });
+    if (start <= end && start.getTime() <= end.getTime()) {
+      if (eventExist) {
+        weeks.push({
+          event: {
+            description: eventDescription,
+          },
+          color: color,
+          date: date,
+        });
+      } else {
+        weeks.push({
+          color: color,
+          date: date,
+          event: {
+            description: eventDescription,
+          },
+        });
+      }
+    } else {
+      weeks.push({
+        color: "white",
+        date: date,
+      });
+    }
+    start.setDate(start.getDate() + 7);
+  }
+  return weeks;
+}
 function MomentoMoriCalender({
   yearLabel = [],
   dateOfBirth = "",
   events = [],
   showDateInput = true,
   showStartingOfYear = true,
+  defaultColor = "pink",
 }) {
   const [dob, setDob] = (0, _react.useState)(dateOfBirth);
-  const [event, setEvent] = (0, _react.useState)(events);
-  const [week, setWeek] = (0, _react.useState)([]);
-  // 2023-01-12
+  const [week, setWeek] = (0, _react.useState)(
+    weeksInLife({
+      dateOfBirth,
+      events,
+    })
+  );
   const yearsToShowOnRightSide = yearLabelCalculator(yearLabel);
-  function weeksInLife(param) {
-    const dateOfBirth = new Date(param.dateOfBirth);
-    const events = param.events.length === 0 ? [] : param.events;
-    const today = new Date();
-    const end = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate()
-    );
-    const weeks = [];
-    let start = new Date(dateOfBirth);
-    for (let i = 0; i < 4160; i++) {
-      let date = start.toString();
-      let color = "#4ea69d";
-      let event;
-      let eventExist = false;
-      for (let j = 0; j < events.length; j++) {
-        const eventStart = new Date(events[j].startingDate);
-        const eventEnd = new Date(events[j].endDate);
-        if (eventStart <= start && start <= eventEnd) {
-          eventExist = true;
-          color = events[j].color;
-          event = events[j];
-          break;
-        }
-      }
-      if (start <= end && start.getTime() <= end.getTime()) {
-        if (eventExist) {
-          weeks.push({
-            event: event,
-            color: color,
-            date: date,
-          });
-        } else {
-          weeks.push({
-            color: color,
-            date: date,
-            event: {
-              description: "No event",
-            },
-          });
-        }
-      } else {
-        weeks.push({
-          color: "white",
-          date: date,
-          event: {
-            description: "You haven't lived",
-          },
-        });
-      }
-      start.setDate(start.getDate() + 7);
-    }
-    return weeks;
-  }
-  (0, _react.useEffect)(() => {
-    setDob(dateOfBirth);
-    setEvent(events);
-  }, [dateOfBirth, events]);
   (0, _react.useEffect)(() => {
     setWeek(
       weeksInLife({
         dateOfBirth: dob,
-        events: event,
+        events,
+        defaultColor,
       })
     );
-  }, [dob, event]);
-  console.log(week);
+  }, [dob, events]);
   return /*#__PURE__*/ _react.default.createElement(
     _react.default.Fragment,
     null,

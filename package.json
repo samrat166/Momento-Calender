@@ -1,6 +1,6 @@
 {
   "name": "momento-mori-calender",
-  "version": "2.0.3",
+  "version": "2.1.4",
   "homepage": "https://github.com/samrat166/Momento-Calender/blob/main/README.md",
   "description": "Momento mori calender",
   "main": "index.js",
@@ -15,7 +15,11 @@
     "Momento",
     "mori",
     "calender",
-    "Samrat"
+    "react-momento-mori-calender",
+    "momento-mori-calender",
+    "life-calender",
+    "mori-calender",
+    "react-momento-mori-calender"
   ],
   "author": "Samrat Ojha",
   "license": "MIT",

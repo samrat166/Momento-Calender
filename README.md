@@ -24,41 +24,42 @@ or if you prefer Yarn
 yarn add momento-mori-calender
 ```
 
-
 # Props
 
-## 1. yearLabel
+### 1. yearLabel
 
 An array of years that should be shown on the right side of the calendar
 
-
-## 2. dateOfBirth
+### 2. dateOfBirth
 
 The user's date of birth, in the format of "YYYY-MM-DD"
 
-
-## 3. showDateInput
+### 3. showDateInput
 
 A boolean that determines whether or not the date of birth input should be shown
 
-## 4. events
+### 4. events
 
- An array of events to be highlighted on the calendar
+An array of events to be highlighted on the calendar
 
-## 5. showStartingOfYear 
+### 5. showStartingOfYear
 
 A boolean that determines whether or not the starting of each year should be indicated on the calendar
+
+### 6. defaultColor
+
+It provides default box color
 
 # Usage
 
 Here's a simple example
 
 ```jsx
-import MomentoMoriCalendar from './MomentoMoriCalendar';
+import MomentoMoriCalendar from "momento-mori-calender";
 
 const App = () => {
   return (
-    <MomentoMoriCalendar 
+    <MomentoMoriCalendar
       yearLabel={[2020, 2021, 2022]}
       dateOfBirth={"1999-10-16"}
       events={[
@@ -66,21 +67,21 @@ const App = () => {
           startingDate: "2021-07-01",
           endDate: "2021-07-07",
           color: "red",
-          description: "Vacation to Hawaii"
+          description: "Vacation to Hawaii",
         },
         {
           startingDate: "2022-02-14",
           endDate: "2022-02-15",
           color: "pink",
-          description: "Valentine's Day"
-        }
+          description: "Valentine's Day",
+        },
       ]}
       showDateInput={true}
       showStartingOfYear={true}
+      defaultColor="pink"
     />
   );
-}
-
+};
 ```
 
 [npm-home]: https://www.npmjs.com/package/momento-mori-calender
