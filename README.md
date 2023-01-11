@@ -8,7 +8,7 @@ Fill in a new square with each passing week, and you'll quickly experience impr
 
 Momento Mori Calender Design Prototype and specification, click to [view][momento-mori-design].
 
-![Screenshot](screenshot.jpg)
+![Screenshot](Screenshot.jpg)
 
 # Installation
 
