@@ -24,62 +24,64 @@ or if you prefer Yarn
 yarn add momento-mori-calender
 ```
 
-# Usage
-
-Here's a simple example
-
-```jsx
-import MomentoMoriCalender from "momento-mori-calender";
-
-export const Example = () => {
-  return (
-    <MomentoMoriCalender
-      yearLabel={[5, 10, 15, 20, 30, 40, 50, 60, 70, 80]}
-      dateOfBirth="1999-10-16"
-      showDateInput
-      events={[]}
-    />
-  );
-};
-```
 
 # Props
 
 ## 1. yearLabel
 
-yearLabel is an array of years
+An array of years that should be shown on the right side of the calendar
 
-### Example:
-
-yearLabel = {[10,20,30,40]}
 
 ## 2. dateOfBirth
 
-dateOfBirth (YYYY-MM-DD) is a value on which momento mori calender is ganerated.You can provide dateOfBirth or use date picker by passing showDateInput as props
+The user's date of birth, in the format of "YYYY-MM-DD"
 
-### Example:
-
-dateOfBirth = '1999-10-16'
 
 ## 3. showDateInput
 
-showDateInput generates a date picker
+A boolean that determines whether or not the date of birth input should be shown
 
 ## 4. events
 
-Events is an array of object where each object is an event.Each event should have startingDate,endDate ,color and description.
-startingDate and endDate are of format 'YYY-MM-DD' , color and description are of string type.
+ An array of events to be highlighted on the calendar
 
-### Example:
+## 5. showStartingOfYear 
 
-events = {[
-{
-startingDate: "1999-10-26",
-endDate: "2002-02-01",
-color: "pink",
-description: "My school day",
+A boolean that determines whether or not the starting of each year should be indicated on the calendar
+
+# Usage
+
+Here's a simple example
+
+```jsx
+import MomentoMoriCalendar from './MomentoMoriCalendar';
+
+const App = () => {
+  return (
+    <MomentoMoriCalendar 
+      yearLabel={[2020, 2021, 2022]}
+      dateOfBirth={"1999-10-16"}
+      events={[
+        {
+          startingDate: "2021-07-01",
+          endDate: "2021-07-07",
+          color: "red",
+          description: "Vacation to Hawaii"
+        },
+        {
+          startingDate: "2022-02-14",
+          endDate: "2022-02-15",
+          color: "pink",
+          description: "Valentine's Day"
+        }
+      ]}
+      showDateInput={true}
+      showStartingOfYear={true}
+    />
+  );
 }
-]}
+
+```
 
 [npm-home]: https://www.npmjs.com/package/momento-mori-calender
 [momento-mori-design]: https://momento-mori-calender.netlify.app/

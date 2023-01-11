@@ -57,10 +57,11 @@ function yearLabelCalculator(array) {
   return result;
 }
 function MomentoMoriCalender({
-  yearLabel = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80],
+  yearLabel = [],
   dateOfBirth = "",
   events = [],
   showDateInput = true,
+  showStartingOfYear = true,
 }) {
   const [dob, setDob] = (0, _react.useState)(dateOfBirth);
   const [event, setEvent] = (0, _react.useState)(events);
@@ -220,7 +221,8 @@ function MomentoMoriCalender({
                   backgroundColor: item.color,
                 },
               },
-              index % 52 === 0 &&
+              showStartingOfYear &&
+                index % 52 === 0 &&
                 /*#__PURE__*/ _react.default.createElement(
                   "h6",
                   {
@@ -231,7 +233,6 @@ function MomentoMoriCalender({
                   },
                   item.date !== "Invalid Date" && item.date.slice(4, 15)
                 ),
-              " ",
               yearsToShowOnRightSide.map((year) => {
                 if (year.index === index)
                   return /*#__PURE__*/ _react.default.createElement(
