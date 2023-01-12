@@ -1,7 +1,7 @@
 {
   "name": "momento-mori-calender",
-  "version": "2.1.4",
-  "homepage": "https://github.com/samrat166/Momento-Calender/blob/main/README.md",
+  "version": "2.1.5",
+  "homepage": "https://github.com/samrat166/Momento-Calender#readme",
   "description": "Momento mori calender",
   "main": "index.js",
   "scripts": {
@@ -25,12 +25,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/samrat166/Momento-Calender/issues"
-  },
-  "homepage": "https://github.com/samrat166/Momento-Calender#readme",
-  "dependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.12",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6"
   }
 }

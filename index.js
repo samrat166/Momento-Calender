@@ -102,6 +102,9 @@ function weeksInLife(param) {
       weeks.push({
         color: "white",
         date: date,
+        event: {
+          description: `You haven't lived`,
+        },
       });
     }
     start.setDate(start.getDate() + 7);
@@ -133,122 +136,121 @@ function MomentoMoriCalender({
       })
     );
   }, [dob, events]);
+  console.log("first");
   return /*#__PURE__*/ _react.default.createElement(
     _react.default.Fragment,
     null,
     /*#__PURE__*/ _react.default.createElement(
       "div",
-      {
-        className: "container",
-      },
+      null,
       /*#__PURE__*/ _react.default.createElement(
         "div",
         {
           style: {
-            marginLeft: "15px",
-            marginTop: "30px",
-            width: "80vw",
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            marginTop: "10px",
+            marginLeft: showStartingOfYear && "50px",
           },
         },
-        /*#__PURE__*/ _react.default.createElement(
-          "div",
-          {
-            style: {
-              display: "flex",
-              justifyContent: "space-between",
-              marginRight: "20px",
-            },
-          },
+        showDateInput &&
           /*#__PURE__*/ _react.default.createElement(
             "div",
             {
               style: {
-                width: "25%",
+                marginLeft: "3%",
               },
             },
-            showDateInput &&
-              /*#__PURE__*/ _react.default.createElement(
-                _react.default.Fragment,
-                null,
-                /*#__PURE__*/ _react.default.createElement(
-                  "span",
-                  null,
-                  "Date of Birth:"
-                ),
-                " ",
-                /*#__PURE__*/ _react.default.createElement("input", {
-                  type: "date",
-                  value: dob,
-                  onChange: (e) => setDob(e.target.value),
-                  style: {
-                    borderRadius: "10px",
-                  },
-                })
-              )
-          )
-        )
-      ),
-      /*#__PURE__*/ _react.default.createElement(
-        "div",
-        {
-          className: "calender",
-        },
-        week.map((item, index) => {
-          var _item$event;
-          let sixMonth = index % 26 === 0;
-          let rowSpace = (index + 1) % 520 === 0;
-          return /*#__PURE__*/ _react.default.createElement(
-            _react.default.Fragment,
-            null,
             /*#__PURE__*/ _react.default.createElement(
-              "div",
-              {
-                key: item.date,
-                title:
-                  item === null || item === void 0
-                    ? void 0
-                    : (_item$event = item.event) === null ||
-                      _item$event === void 0
-                    ? void 0
-                    : _item$event.description,
-                className: "week-cell",
-                style: {
-                  marginBottom: rowSpace && "10px",
-                  marginLeft: sixMonth && "8px",
-                  backgroundColor: item.color,
-                },
-              },
-              showStartingOfYear &&
-                index % 52 === 0 &&
-                /*#__PURE__*/ _react.default.createElement(
-                  "h6",
-                  {
-                    style: {
-                      fontSize: "10px",
-                      marginLeft: "-60px",
-                    },
+              _react.default.Fragment,
+              null,
+              /*#__PURE__*/ _react.default.createElement(
+                "span",
+                {
+                  style: {
+                    fontWeight: "600",
                   },
-                  item.date !== "Invalid Date" && item.date.slice(4, 15)
-                ),
-              yearsToShowOnRightSide.map((year) => {
-                if (year.index === index)
-                  return /*#__PURE__*/ _react.default.createElement(
-                    "h6",
-                    {
-                      key: year.label,
-                      style: {
-                        fontSize: "12px",
-                        marginLeft: "15px",
-                        fontWeight: "600",
-                        marginTop: "-3px",
-                      },
-                    },
-                    year.label
-                  );
+                },
+                "Date of Birth : "
+              ),
+              /*#__PURE__*/ _react.default.createElement("input", {
+                type: "date",
+                value: dob,
+                onChange: (e) => setDob(e.target.value),
+                style: {
+                  borderRadius: "5px",
+                  padding: 0,
+                },
               })
             )
-          );
-        })
+          ),
+        /*#__PURE__*/ _react.default.createElement(
+          "div",
+          {
+            className: "calender",
+          },
+          week.map((item, index) => {
+            var _item$event;
+            let sixMonth = index % 26 === 0;
+            let rowSpace = (index + 1) % 520 === 0;
+            return /*#__PURE__*/ _react.default.createElement(
+              _react.default.Fragment,
+              null,
+              /*#__PURE__*/ _react.default.createElement(
+                "div",
+                {
+                  key: item.date,
+                  title:
+                    item === null || item === void 0
+                      ? void 0
+                      : (_item$event = item.event) === null ||
+                        _item$event === void 0
+                      ? void 0
+                      : _item$event.description,
+                  className: "week-cell",
+                  style: {
+                    marginBottom: rowSpace && "4px",
+                    marginLeft: sixMonth && "3px",
+                    backgroundColor: item.color,
+                  },
+                },
+                showStartingOfYear &&
+                  index % 52 === 0 &&
+                  /*#__PURE__*/ _react.default.createElement(
+                    "h6",
+                    {
+                      style: {
+                        fontSize: "9px",
+                        marginLeft: "-58px",
+                      },
+                    },
+                    /*#__PURE__*/ _react.default.createElement(
+                      "i",
+                      null,
+                      item.date !== "Invalid Date" && item.date.slice(4, 15)
+                    )
+                  ),
+                yearsToShowOnRightSide.map((year) => {
+                  if (year.index === index)
+                    return /*#__PURE__*/ _react.default.createElement(
+                      "h6",
+                      {
+                        key: year.label,
+                        style: {
+                          fontSize: "10px",
+                          marginLeft: "14px",
+                          fontWeight: "600",
+                          marginTop: "-2px",
+                        },
+                      },
+                      year.label
+                    );
+                })
+              )
+            );
+          })
+        )
       )
     )
   );

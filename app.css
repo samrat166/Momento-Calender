@@ -1,19 +1,12 @@
 .calender {
-  margin-top: 10px;
   display: grid;
-  max-width: 80vw;
-  margin-left: 2vw;
-  grid-gap: 3px;
+  grid-gap: 2px;
   grid-template-columns: repeat(52, auto);
 }
 
 .week-cell {
-  border: 1px solid #333;
-  height: 1vw;
-  width: 1vw;
-  border-radius: 20%;
-}
-.header {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  border: 1px solid rgb(150, 150, 150);
+  min-height: 5px;
+  min-width: 5px;
+  border-radius: 1px;
 }
