@@ -34,19 +34,16 @@ An array of years that should be shown on the right side of the calendar
 
 The user's date of birth, in the format of "YYYY-MM-DD"
 
-### 3. showDateInput
 
-A boolean that determines whether or not the date of birth input should be shown
-
-### 4. events
+### 3. events
 
 An array of events to be highlighted on the calendar
 
-### 5. showStartingOfYear
+### 4. showStartingOfYear
 
 A boolean that determines whether or not the starting of each year should be indicated on the calendar
 
-### 6. defaultColor
+### 5. defaultColor
 
 It provides default box color
 
@@ -76,7 +73,6 @@ const App = () => {
           description: "Valentine's Day",
         },
       ]}
-      showDateInput={true}
       showStartingOfYear={true}
       defaultColor="pink"
     />

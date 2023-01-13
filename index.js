@@ -115,11 +115,9 @@ function MomentoMoriCalender({
   yearLabel = [],
   dateOfBirth = "",
   events = [],
-  showDateInput = true,
   showStartingOfYear = true,
   defaultColor = "pink",
 }) {
-  const [dob, setDob] = (0, _react.useState)(dateOfBirth);
   const [week, setWeek] = (0, _react.useState)(
     weeksInLife({
       dateOfBirth,
@@ -128,21 +126,23 @@ function MomentoMoriCalender({
   );
   const yearsToShowOnRightSide = yearLabelCalculator(yearLabel);
   (0, _react.useEffect)(() => {
+    console.log(dateOfBirth, "asdasdasd");
     setWeek(
       weeksInLife({
-        dateOfBirth: dob,
+        dateOfBirth,
         events,
         defaultColor,
       })
     );
-  }, [dob, events]);
-  console.log("first");
+  }, [dateOfBirth, events]);
   return /*#__PURE__*/ _react.default.createElement(
     _react.default.Fragment,
     null,
     /*#__PURE__*/ _react.default.createElement(
       "div",
-      null,
+      {
+        className: "container",
+      },
       /*#__PURE__*/ _react.default.createElement(
         "div",
         {
@@ -154,37 +154,6 @@ function MomentoMoriCalender({
             marginLeft: showStartingOfYear && "50px",
           },
         },
-        showDateInput &&
-          /*#__PURE__*/ _react.default.createElement(
-            "div",
-            {
-              style: {
-                marginLeft: "3%",
-              },
-            },
-            /*#__PURE__*/ _react.default.createElement(
-              _react.default.Fragment,
-              null,
-              /*#__PURE__*/ _react.default.createElement(
-                "span",
-                {
-                  style: {
-                    fontWeight: "600",
-                  },
-                },
-                "Date of Birth : "
-              ),
-              /*#__PURE__*/ _react.default.createElement("input", {
-                type: "date",
-                value: dob,
-                onChange: (e) => setDob(e.target.value),
-                style: {
-                  borderRadius: "5px",
-                  padding: 0,
-                },
-              })
-            )
-          ),
         /*#__PURE__*/ _react.default.createElement(
           "div",
           {
@@ -231,22 +200,23 @@ function MomentoMoriCalender({
                       item.date !== "Invalid Date" && item.date.slice(4, 15)
                     )
                   ),
-                yearsToShowOnRightSide.map((year) => {
-                  if (year.index === index)
-                    return /*#__PURE__*/ _react.default.createElement(
-                      "h6",
-                      {
-                        key: year.label,
-                        style: {
-                          fontSize: "10px",
-                          marginLeft: "14px",
-                          fontWeight: "600",
-                          marginTop: "-2px",
+                yearsToShowOnRightSide.length !== 0 &&
+                  yearsToShowOnRightSide.map((year) => {
+                    if (year.index === index)
+                      return /*#__PURE__*/ _react.default.createElement(
+                        "h6",
+                        {
+                          key: year.label,
+                          style: {
+                            fontSize: "10px",
+                            marginLeft: "14px",
+                            fontWeight: "600",
+                            marginTop: "-2px",
+                          },
                         },
-                      },
-                      year.label
-                    );
-                })
+                        year.label
+                      );
+                  })
               )
             );
           })
