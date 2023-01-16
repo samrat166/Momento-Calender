@@ -126,7 +126,6 @@ function MomentoMoriCalender({
   );
   const yearsToShowOnRightSide = yearLabelCalculator(yearLabel);
   (0, _react.useEffect)(() => {
-    console.log(dateOfBirth, "asdasdasd");
     setWeek(
       weeksInLife({
         dateOfBirth,
@@ -141,17 +140,14 @@ function MomentoMoriCalender({
     /*#__PURE__*/ _react.default.createElement(
       "div",
       {
-        className: "container",
+        className: "",
       },
       /*#__PURE__*/ _react.default.createElement(
         "div",
         {
           style: {
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
             marginTop: "10px",
-            marginLeft: showStartingOfYear && "50px",
+            marginLeft: showStartingOfYear && "70px",
           },
         },
         /*#__PURE__*/ _react.default.createElement(
@@ -161,7 +157,6 @@ function MomentoMoriCalender({
           },
           week.map((item, index) => {
             var _item$event;
-            let sixMonth = index % 26 === 0;
             let rowSpace = (index + 1) % 520 === 0;
             return /*#__PURE__*/ _react.default.createElement(
               _react.default.Fragment,
@@ -180,7 +175,6 @@ function MomentoMoriCalender({
                   className: "week-cell",
                   style: {
                     marginBottom: rowSpace && "4px",
-                    marginLeft: sixMonth && "3px",
                     backgroundColor: item.color,
                   },
                 },
