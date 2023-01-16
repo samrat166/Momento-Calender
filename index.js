@@ -141,83 +141,74 @@ function MomentoMoriCalender({
       "div",
       {
         style: {
-          display: "flex",
-          justifyContent: "center",
+          marginTop: "10px",
+          marginLeft: showStartingOfYear && "60px",
         },
       },
       /*#__PURE__*/ _react.default.createElement(
         "div",
         {
-          style: {
-            marginTop: "10px",
-            marginLeft: showStartingOfYear && "70px",
-          },
+          className: "calender",
         },
-        /*#__PURE__*/ _react.default.createElement(
-          "div",
-          {
-            className: "calender",
-          },
-          week.map((item, index) => {
-            var _item$event;
-            let rowSpace = (index + 1) % 520 === 0;
-            return /*#__PURE__*/ _react.default.createElement(
-              _react.default.Fragment,
-              null,
-              /*#__PURE__*/ _react.default.createElement(
-                "div",
-                {
-                  key: item.date,
-                  title:
-                    item === null || item === void 0
-                      ? void 0
-                      : (_item$event = item.event) === null ||
-                        _item$event === void 0
-                      ? void 0
-                      : _item$event.description,
-                  className: "week-cell",
-                  style: {
-                    marginBottom: rowSpace && "4px",
-                    backgroundColor: item.color,
-                  },
+        week.map((item, index) => {
+          var _item$event;
+          let rowSpace = (index + 1) % 520 === 0;
+          return /*#__PURE__*/ _react.default.createElement(
+            _react.default.Fragment,
+            null,
+            /*#__PURE__*/ _react.default.createElement(
+              "div",
+              {
+                key: item.date,
+                title:
+                  item === null || item === void 0
+                    ? void 0
+                    : (_item$event = item.event) === null ||
+                      _item$event === void 0
+                    ? void 0
+                    : _item$event.description,
+                className: "week-cell",
+                style: {
+                  marginBottom: rowSpace && "4px",
+                  backgroundColor: item.color,
                 },
-                showStartingOfYear &&
-                  index % 52 === 0 &&
-                  /*#__PURE__*/ _react.default.createElement(
-                    "h6",
-                    {
-                      style: {
-                        fontSize: "9px",
-                        marginLeft: "-58px",
-                      },
+              },
+              showStartingOfYear &&
+                index % 52 === 0 &&
+                /*#__PURE__*/ _react.default.createElement(
+                  "h6",
+                  {
+                    style: {
+                      fontSize: "9px",
+                      marginLeft: "-58px",
                     },
-                    /*#__PURE__*/ _react.default.createElement(
-                      "i",
-                      null,
-                      item.date !== "Invalid Date" && item.date.slice(4, 15)
-                    )
-                  ),
-                yearsToShowOnRightSide.length !== 0 &&
-                  yearsToShowOnRightSide.map((year) => {
-                    if (year.index === index)
-                      return /*#__PURE__*/ _react.default.createElement(
-                        "h6",
-                        {
-                          key: year.label,
-                          style: {
-                            fontSize: "10px",
-                            marginLeft: "14px",
-                            fontWeight: "600",
-                            marginTop: "-2px",
-                          },
+                  },
+                  /*#__PURE__*/ _react.default.createElement(
+                    "i",
+                    null,
+                    item.date !== "Invalid Date" && item.date.slice(4, 15)
+                  )
+                ),
+              yearsToShowOnRightSide.length !== 0 &&
+                yearsToShowOnRightSide.map((year) => {
+                  if (year.index === index)
+                    return /*#__PURE__*/ _react.default.createElement(
+                      "h6",
+                      {
+                        key: year.label,
+                        style: {
+                          fontSize: "10px",
+                          marginLeft: "14px",
+                          fontWeight: "600",
+                          marginTop: "-2px",
                         },
-                        year.label
-                      );
-                  })
-              )
-            );
-          })
-        )
+                      },
+                      year.label
+                    );
+                })
+            )
+          );
+        })
       )
     )
   );
