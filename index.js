@@ -140,7 +140,10 @@ function MomentoMoriCalender({
     /*#__PURE__*/ _react.default.createElement(
       "div",
       {
-        className: "",
+        style: {
+          display: "flex",
+          justifyContent: "center",
+        },
       },
       /*#__PURE__*/ _react.default.createElement(
         "div",
